@@ -1,0 +1,76 @@
+* {
+  --Background: #04030f;
+  --Accent: #E8F1F1;
+}
+
+body {
+  background-image: url("../resources/webbackground.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  user-select: none;
+  cursor:default;
+  background-color: var(--Background);
+  color: var(--Accent);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-family: Helvetica, sans-serif;
+  
+}
+
+.header{
+  margin-top: 1rem;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.header > a:visited, .header > a{
+  color: var(--Accent);
+  text-decoration: none;
+}
+
+.header > a {
+  padding: 1rem;
+}
+#backgroundCanvas {
+  inset: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+#deactivatebackground{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  background-color: var(--Background);
+  color: var(--Accent);
+  border: none;
+}
+
+.title {
+  font-size: 15rem;
+  mix-blend-mode: difference;
+
+}
+
+.saying {
+  font-size: 5rem;
+  mix-blend-mode: difference;
+
+}
+
+footer {
+  position: fixed;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2rem;
+}
