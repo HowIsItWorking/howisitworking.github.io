@@ -30,10 +30,12 @@ body {
 }
 
 .header {
-  margin-top: 1rem;
   display: flex;
   width: 100%;
   justify-content: space-around;
+
+  background: #000000;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.377) 0%, rgba(255, 255, 255, 0) 100%);
 }
 
 .header>a:visited,
