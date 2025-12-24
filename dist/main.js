@@ -2,6 +2,8 @@ const canvas = document.getElementById("backgroundCanvas");
 const ctx = canvas.getContext("2d");
 const deactivateCheckBox = document.getElementById("deactivatebackground");
 const anchors = document.getElementsByClassName("anchors");
+const realWidth = window.screen.width;
+const realHeight = window.screen.height;
 /* ===================== STATE ===================== */
 const dots = [];
 let initialized = false;
@@ -13,7 +15,12 @@ const mouse = {
     active: false
 };
 /* ===================== CONFIG ===================== */
-let DOT_COUNT = 265;
+const baseDots = 265;
+const referenceArea = 1920 * 1080;
+const currentArea = realWidth * realHeight;
+const scaledDots = baseDots * (currentArea / referenceArea);
+const MAX_DOTS = Math.min(1024, Math.floor(scaledDots));
+console.log(MAX_DOTS);
 let MAX_DISTANCE = 120;
 let DOT_REPEL_RADIUS = 128;
 let DOT_REPEL_FORCE = 0.5;
@@ -205,7 +212,7 @@ function loop() {
 }
 /* ===================== INIT ===================== */
 if (!initialized) {
-    for (let i = 0; i < DOT_COUNT; i++) {
+    for (let i = 0; i < MAX_DOTS; i++) {
         dots.push(createDot());
     }
     initialized = true;

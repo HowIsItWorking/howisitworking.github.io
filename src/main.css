@@ -3,13 +3,22 @@
   --Accent: #E8F1F1;
 }
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-image: url("../resources/webbackground.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
+
   user-select: none;
   cursor: default;
-  background-color: var(--Background);
+  
   color: var(--Accent);
   display: flex;
   flex-direction: column;
