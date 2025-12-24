@@ -8,7 +8,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   user-select: none;
-  cursor:default;
+  cursor: default;
   background-color: var(--Background);
   color: var(--Accent);
   display: flex;
@@ -16,24 +16,26 @@ body {
   align-items: center;
 
   font-family: Helvetica, sans-serif;
-  
+
 }
 
-.header{
+.header {
   margin-top: 1rem;
   display: flex;
   width: 100%;
   justify-content: space-around;
 }
 
-.header > a:visited, .header > a{
+.header>a:visited,
+.header>a {
   color: var(--Accent);
   text-decoration: none;
 }
 
-.header > a {
+.header>a {
   padding: 1rem;
 }
+
 #backgroundCanvas {
   inset: 0;
   pointer-events: none;
@@ -45,7 +47,7 @@ body {
   z-index: -1;
 }
 
-#deactivatebackground{
+#deactivatebackground {
   position: fixed;
   right: 0;
   bottom: 0;
@@ -55,13 +57,14 @@ body {
 }
 
 .title {
-  font-size: 15rem;
+  font-size: clamp(4rem, 10vw, 25rem);
   mix-blend-mode: difference;
 
 }
 
 .saying {
-  font-size: 5rem;
+  text-align: center;
+  font-size: clamp(2rem, 6vw, 15rem);
   mix-blend-mode: difference;
 
 }
