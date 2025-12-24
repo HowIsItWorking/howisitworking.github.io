@@ -5,7 +5,7 @@
   --Accent: #FF2D55;
 
   /* Apple-style Blur / Glassmorphism */
-  --Glass-Bg: rgba(4, 3, 15, 0.75);
+  --Glass-Bg: rgba(225, 230, 245, 0.13);
   --Hairline: rgba(232, 241, 241, 0.15);
 }
 
@@ -53,9 +53,9 @@ body {
   z-index: 100;
 
   background: var(--Glass-Bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 0.5px solid var(--Hairline);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-bottom: 2px solid var(--Hairline);
 }
 
 .header>a {
@@ -195,7 +195,7 @@ footer>a:visited {
   z-index: 110;
   padding: 10px;
   background: var(--Glass-Bg);
-  border-radius: 50%;
+  border-radius: 10%;
   backdrop-filter: blur(10px);
   border: 0.5px solid var(--Hairline);
 }
