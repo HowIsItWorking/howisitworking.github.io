@@ -11,14 +11,15 @@ body {
 }
 
 body {
-  background-image: url("../resources/webbackground.jpg");
+  background-image: url("../resources/webbackground.webp");
+  background-color: var(--Background);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 
   user-select: none;
   cursor: default;
-  
+
   color: var(--Accent);
   display: flex;
   flex-direction: column;
