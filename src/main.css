@@ -1,6 +1,19 @@
-* {
+/* ===================== DESIGN TOKENS ===================== */
+:root {
   --Background: #04030f;
-  --Accent: #E8F1F1;
+  --Surface: #E8F1F1;
+  --Accent: #FF2D55;
+
+  /* Apple-style Blur / Glassmorphism */
+  --Glass-Bg: rgba(4, 3, 15, 0.75);
+  --Hairline: rgba(232, 241, 241, 0.15);
+}
+
+/* ===================== RESET & BASE ===================== */
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html,
@@ -19,35 +32,50 @@ body {
 
   user-select: none;
   cursor: default;
+  overflow-x: hidden;
 
-  color: var(--Accent);
+  color: var(--Surface);
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  font-family: Helvetica, sans-serif;
-
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+/* ===================== COMPONENTS ===================== */
 
 .header {
   display: flex;
   width: 100%;
   justify-content: space-around;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 
-  background: #000000;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.377) 0%, rgba(255, 255, 255, 0) 100%);
+  background: var(--Glass-Bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 0.5px solid var(--Hairline);
 }
 
-.header>a:visited,
 .header>a {
-  color: var(--Accent);
+  padding: 1.2rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header>a:hover {
+  opacity: 0.6;
+}
+
+a:visited,
+a {
+  color: var(--Surface);
   text-decoration: none;
 }
 
-.header>a {
-  padding: 1rem;
-}
-
+/* Background Canvas */
 #backgroundCanvas {
   inset: 0;
   pointer-events: none;
@@ -59,33 +87,132 @@ body {
   z-index: -1;
 }
 
-#deactivatebackground {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  background-color: var(--Background);
+/* ===================== MAIN CONTENT ===================== */
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.logo-title-container{
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin: 0;
+  margin-top: 2vh;
+  height: min-content;
+}
+
+.hiiw-logo{
+  margin: 0;
   color: var(--Accent);
-  border: none;
+  max-height: clamp(4rem, 20vw, 25rem);
+  max-width: clamp(4rem, 20vw, 25rem);
+
 }
 
 .title {
-  font-size: clamp(4rem, 10vw, 25rem);
-  mix-blend-mode: difference;
+  margin: 0;
+  font-size: clamp(4rem, 20vw, 25rem);
+  color: var(--Accent);
+  font-weight: 800;
 
+
+  letter-spacing: -0.05em;
+  line-height: 0.85;
+  mix-blend-mode: normal;
+}
+
+.subtitle {
+  margin: 0;
+  /* Adjusted for better legibility on mobile */
+  font-size: clamp(1rem, 1.5vw, 2rem);
+  color: var(--Accent);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
 }
 
 .saying {
+  margin-top: 8rem;
   text-align: center;
   font-size: clamp(2rem, 6vw, 15rem);
-  mix-blend-mode: difference;
+  font-weight: 900;
+  letter-spacing: -0.04em;
 
+  /* Optimized mix-blend for readability */
+  color: var(--Surface);
+  opacity: 0.7;
+  mix-blend-mode: overlay;
 }
 
+/* ===================== FOOTER ===================== */
+
 footer {
+  background-color: var(--Glass-Bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 0.5px solid var(--Hairline);
+
+  color: var(--Accent);
+  justify-content: space-around;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
   position: fixed;
   text-align: center;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 2rem;
+  height: 3.5rem;
+  z-index: 100;
+}
+
+footer>div {
+  font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+footer>a,
+footer>a:visited {
+  color: var(--Accent);
+  font-size: clamp(0.8rem, 1vw, 1rem);
+  font-weight: 600;
+}
+
+/* ===================== ACCESSIBILITY/UI ===================== */
+
+.icon-checkbox-label {
+  position: fixed;
+  right: 25px;
+  bottom: 80px;
+  cursor: pointer;
+  z-index: 110;
+  padding: 10px;
+  background: var(--Glass-Bg);
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+  border: 0.5px solid var(--Hairline);
+}
+
+.icon-checkbox-label>* {
+  color: var(--Accent);
+}
+
+#deactivate-background,
+.checked-icon {
+  display: none;
+}
+
+#deactivate-background:checked~.checked-icon {
+  display: inline-block;
+}
+
+#deactivate-background:checked~.unchecked-icon {
+  display: none;
 }
